@@ -1,0 +1,1 @@
+$(function () { $(".modal_open_button").click(function () {$(".modal_win").fadeIn() }); $(".model_close_button").click(function () { $(".modal_win").fadeOut() }) })
