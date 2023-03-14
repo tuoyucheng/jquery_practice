@@ -6,7 +6,8 @@
 
 .nav-container {
   margin: 0;
-  position: relative; }
+  position: relative;
+}
 
 .nav {
   border: 1px solid #ccc;
