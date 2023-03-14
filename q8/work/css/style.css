@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-input, select, button {
+input,
+select,
+button {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -33,7 +35,7 @@ body {
   text-align: center;
 }
 
-.header > p {
+.header>p {
   font-size: 34px;
   color: #ffffff;
 }
@@ -99,17 +101,17 @@ body {
   padding: 0px 20px 50px 0px;
 }
 
-.list-inner > p {
+.list-inner>p {
   margin-bottom: 15px;
 }
 
-.list-inner > a {
+.list-inner>a {
   text-decoration: none;
   color: #fff;
   transition: all 0.5s;
 }
 
-.list-inner > a:hover {
+.list-inner>a:hover {
   color: #3d7b1a;
 }
 

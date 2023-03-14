@@ -19,14 +19,14 @@ li {
   cursor: pointer;
 }
 
-.dropdwn > li {
+.dropdwn>li {
   width: 1200px;
   margin-left: 1px;
   background: #7ba5ff;
   display: inline;
 }
 
-.dropdwn > li:first-child {
+.dropdwn>li:first-child {
   margin-left: 0px;
 }
 
