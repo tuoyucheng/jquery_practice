@@ -1,16 +1,3 @@
-var $jscomp = $jscomp || {};
-$jscomp.scope = {};
-
-$jscomp.createTemplateTagFirstArg = function (a) {
-  return a.raw = a
-};
-
-$jscomp.createTemplateTagFirstArgWithRaw = function (a, b) {
-  a.raw = b;
-  return a
-};
-
-
 $(function () {
 
   //読み込み時に文字色をグリーンに変える。
@@ -37,11 +24,11 @@ $(function () {
   //クリックしたときに、
   $("#q5").on("click", function () {
     //ボタンの中に「DOMの中」と表記
-    $(this).append("DOM\u306e\u4e2d")
+    $(this).append("DOMの中")
       //ボタンの前に｛DOMの前」と表記
-      .before("DOM\u306e\u524d")
+      .before("DOMの前")
       //ボタンの後に「DOMの後」と表記
-      .after("DOM\u306e\u5f8c")
+      .after("DOMの後")
   });
 
   //クリックした時に、
@@ -76,17 +63,17 @@ $(function () {
   //クリックしたときに、
   $("#q9 li").on("click", function () {
     //対象のインデックス番号を
-    var a = $(this).index();
+    var verb = $(this).index();
     //アラート表示。
-    alert(a)
+    alert(verb)
   });
 
   //Q10をクリックしたときに、
   $("#q10 li").on("click", function () {
     //Q11のインデックス番号を取得し、
-    var a = $(this).index();
-    console.log($("#q11 li").eq(a));
+    var verb = $(this).index();
+    console.log($("#q11 li").eq(verb));
     //対象のインデックス番号のテキストに、large-text属性を追加して表示。
-    $("#q11 li").eq(a).addClass("large-text")
+    $("#q11 li").eq(verb).addClass("large-text")
   })
 });
