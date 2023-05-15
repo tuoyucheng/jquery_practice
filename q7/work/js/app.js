@@ -18,7 +18,7 @@ $(function () {
     console.log($(".occupation").val());
     //console.logにアカウント情報が表示される。
     console.log("アカウント情報");
-    console.log($("#acconut__name").val());
+    console.log($("#account__name").val());
     //console.logにメールアドレスが表示される。
     console.log("メールアドレス");
     console.log($("#email").val());

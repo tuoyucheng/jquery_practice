@@ -1,12 +1,12 @@
 $(function () {
-  function verb(e) {
+  function verb(edge) {
     //エラーメッセージを消す。
     $(".message").remove();
     //空の変数bottleを作る。
     var bottle;
-    //eはもらってきたデータ一番初め（0）のアイテムをbottleに入れる。bがnullと一緒なのか？nullと一緒だったらvoid0が選ばれる。nullと一緒ではない場合はbottle.lengthが実行される。apiからもらったデータの数だけ繰り返しcupの中に入れる。
-    0 < (null == (bottle = e[0].items) ? void 0 : bottle.length) ? $.each(e[0].items, function (h, cup) {
-      var g = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
+    //edgeはもらってきたデータ一番初め（0）のアイテムをbottleに入れる。bottleがnullと一緒なのか？nullと一緒だったらvoid 0が選ばれる。nullと一緒ではない場合はbottle.lengthが実行される。apiからもらったデータの数だけ繰り返しcupの中に入れる。
+    0 < (null == (bottle = edge[0].items) ? void 0 : bottle.length) ? $.each(edge[0].items, function (hand, cup) {
+      var gain = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
         ((cup.title ? cup.title : "タイトル不明") +
           "</p><p>作者：") +
         ((cup["dc:creator"] ? cup["dc:creator"] : "作者不明") +
@@ -14,19 +14,19 @@ $(function () {
         ((cup["dc:publisher"] ? cup["dc:publisher"][0] : "出版社") +
           '</p><a href="') + (cup.link["@id"] +
           '" target="_blank">書籍情報</a></div></li>');
-      //.listsのなかにgが入る。
-      $(".lists").prepend(g)
+      //.listsのなかにgainが入る。
+      $(".lists").prepend(gain)
       //0＜void0を実行して、下記が表示される。
     }) : $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>')
   }
   var page = 1,
-    f = "";
+    fact = "";
   //検索ボタンを押した場合、
   $(".search-btn").on("click", function () {
     //#search-inputにあるバリューをsearchInputValueの中に入れる。
     var searchInputValue = $("#search-input").val();
-    //searchInputValueがfと違う場合はpageに1を入れて、listsをからにしてほしい。fにsearchInputValueを入れる。pageとfが同じ場合page++が実行される。
-    searchInputValue !== f ? (page= 1, $(".lists").empty(), f = searchInputValue) : page++;
+    //searchInputValueがfactと違う場合はpageに1を入れて、listsを空にしてほしい。factにsearchInputValueを入れる。pageとfactが同じ場合page++が実行される。
+    searchInputValue !== fact ? (page = 1, $(".lists").empty(), fact = searchInputValue) : page++;
 
     $.ajax({
       //ajaxが実行されて、リンク先からデータを持ってくる。(searchInputValueに入力した内容、pageは持ってきたデータの1ページ目の内容)
@@ -54,8 +54,8 @@ $(function () {
   $(".reset-btn").on("click", function () {
     //pageに1を入れる
     page = 1;
-    //fを空にする
-    f = "";
+    //factを空にする
+    fact = "";
     //.listsが付いている所を空にする。
     $(".lists").empty();
     //エラーメッセージを消す。
