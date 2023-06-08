@@ -12,7 +12,7 @@ $(function () {
   //クリックしたときに、
   $("#q3").on("click", function () {
     //3秒間でフェードアウトする。
-    $(this).fadeOut(3E3)
+    $(this).fadeOut(3000)
   });
 
   //クリックした時に、
@@ -39,7 +39,7 @@ $(function () {
     $(this).animate({
       "margin-top": 100,
       "margin-left": 100
-    },2E3)
+    },2000)
   });
 
   //クリックしたときに、
