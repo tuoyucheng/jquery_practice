@@ -19,7 +19,7 @@ $(function () {
       //0＜void0を実行して、下記が表示される。
     }) : $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>')
   }
-  //pageOne（持ってきたデータの1ページ目の内容）を宣言。
+  //pageOne（データの1ページ目の内容）を宣言。
   let pageOne = 1,
     quotation = "";
   //検索ボタンを押した場合、
