@@ -3,7 +3,7 @@ $(function () {
     //エラーメッセージを消す。
     $(".message").remove();
     //空の変数createを作る。
-    let create;
+    let creation;
     //eはもらってきたデータ一番初め（0）のアイテムをcreateに入れる。createがnullと一緒なのか？nullと一緒だったらvoid 0が選ばれる。nullと一緒ではない場合はcreate.lengthが実行される。apiからもらったデータの数だけ繰り返しcの中に入れる。
     0 < (null == (create = e[0].items) ? void 0 : create.length) ? $.each(e[0].items, function (h, c) {
       let get = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +

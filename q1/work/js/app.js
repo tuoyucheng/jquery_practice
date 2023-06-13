@@ -25,8 +25,8 @@ $(function () {
   $("#q5").on("click", function () {
     //ボタンの中に「DOMの中の前」と表記
     $(this).prepend("DOMの中の前")
-    //ボタンの中に「DOMの中の後」と表記
-    .append("DOMの中の後")
+      //ボタンの中に「DOMの中の後」と表記
+      .append("DOMの中の後")
       //ボタンの前に｛DOMの前」と表記
       .before("DOMの前")
       //ボタンの後に「DOMの後」と表記
@@ -39,15 +39,14 @@ $(function () {
     $(this).animate({
       "margin-top": 100,
       "margin-left": 100
-    },2000)
+    }, 2000)
   });
 
   //クリックしたときに、
-  $("#q7").on("click",
+  $("#q7").on("click", function () {
     //idのノードをコンソール表示。
-    function () {
-      console.log(this)
-    });
+    console.log(this)
+  });
 
   //カーソルを置いた時に、
   $("#q8").on({
@@ -65,17 +64,17 @@ $(function () {
   //クリックしたときに、
   $("#q9 li").on("click", function () {
     //対象のインデックス番号を
-    const getIndex = $(this).index();
+    const q9ListIndex = $(this).index();
     //アラート表示。
-    alert(getIndex)
+    alert(q9ListIndex)
   });
 
   //Q10をクリックしたときに、
   $("#q10 li").on("click", function () {
     //Q11のインデックス番号を取得し、
-    const getIndex = $(this).index();
-    console.log($("#q11 li").eq(getIndex));
+    const q10ListIndex = $(this).index();
+    console.log($("#q11 li").eq(q10ListIndex));
     //対象のインデックス番号のテキストに、large-text属性を追加して表示。
-    $("#q11 li").eq(getIndex).addClass("large-text")
+    $("#q11 li").eq(q10ListIndex).addClass("large-text")
   })
 });
