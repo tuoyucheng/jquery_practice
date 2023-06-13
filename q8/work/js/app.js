@@ -4,7 +4,7 @@ $(function () {
     $(".message").remove();
     //空の変数creationを作る。
     let creation;
-    //firstDateはもらってきたデータ一番初め（0）のアイテムをcreationに入れる。creationがnullと一緒なのか？nullと一緒だったらvoid 0が選ばれる。nullと一緒ではない場合はcreate.lengthが実行される。apiからもらったデータの数だけ繰り返しbookの中に入れる。
+    //firstDate(もらってきたデータの一番初め)のアイテムをcreationに入れる。creationがnullと一緒なのか？nullと一緒だったらvoid 0が選ばれる。nullと一緒ではない場合はcreate.lengthが実行される。apiからもらったデータの数だけ繰り返しbookの中に入れる。
     0 < (null == (creation = firstDate[0].items) ? void 0 : creation.length) ? $.each(firstDate[0].items, function (name, book) {
       let getInformation = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
         ((book.title ? book.title : "タイトル不明") +
