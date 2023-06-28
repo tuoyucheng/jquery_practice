@@ -4,15 +4,14 @@ $(function () {
     $(".message").remove();
     //空の変数creationを作る。
     let creation = firstDate[0].items;
-    //creationがnullか0以下だったら（検索しても何もなかったら）
+    //creationがnullか0以下だったら、
     if (creation === null || creation.length <= 0) {
-      void 0;
       //.listsの前に下記のメッセージを表示させる。
       $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>')
     } else {
       //取得したデータを表示する。（作者、タイトル、出版社　など）
       $.each(firstDate[0].items, function (name, book) {
-        let getInformation = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
+        const getInformation = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
           ((book.title ? book.title : "タイトル不明") + "</p><p>作者：") +
           ((book["dc:creator"] ? book["dc:creator"] : "作者不明") + "</p><p>出版社") +
           ((book["dc:publisher"] ? book["dc:publisher"][0] : "出版社") + '</p><a href="') + (book.link["@id"] + '" target="_blank">書籍情報</a></div></li>');
@@ -21,21 +20,21 @@ $(function () {
       })
     }
   }
-  //pageOne（データの1ページ目の内容）を宣言。
-  let pageOne = 1;
-  //quotation（""）を宣言。
-  let quotation = "";
+  //pageNum（データの1ページ目の内容）を宣言。
+  let pageNum = 1;
+  //pageCheckKeyword（""）を宣言。
+  let pageCheckKeyword = "";
   // messageShowを定義する。
-  function messageShow(jqXHR) {
+  function messageShow(data) {
     //failの時はリストを空にする。
     $(".lists").empty();
     //メッセージを削除する。（この操作の前に既に失敗していることを想定している。そのエラーメッセージを消す。）
     $(".message").remove();
-    //jqXHRのステータスは0か？0だったら下記メッセージを表示。（0、400はエラーステータスのこと）
-    if (jqXHR.status === 0) {
+    //dataのステータスは0か？0だったら下記メッセージを表示。（0、400はエラーステータスのこと）
+    if (data.status === 0) {
       $(".lists").before('<div class="message">正常に通信できませんでした。<br>インターネットの接続の確認をしてください。</div>');
-      //jqXHRのステータスが400だったら下記メッセージを表示。
-    } else if (jqXHR.status === 400) {
+      //dataのステータスが400だったら下記メッセージを表示。
+    } else if (date.status === 400) {
       $(".lists").before('<div class="message">検索キーワードがありません。<br>文字以上で検索してください。</div>');
       //0でも400でもなかったら、下記メッセージを表示。
     } else {
@@ -46,37 +45,37 @@ $(function () {
   $(".search-btn").on("click", function () {
     //#search-inputにあるバリューをkeywordの中に入れる。
     const keyword = $("#search-input").val();
-    //keywordがquotationと違う場合はpageOneに1を入れて、
-    if (keyword !== quotation) {
-      pageOne = 1;
+    //keywordがpageCheckKeywordと違う場合はpageNumに1を入れて、
+    if (keyword !== pageCheckKeyword) {
+      pageNum = 1;
       //listsを空にする。
       $(".lists").empty();
-      //quotationにkeywordを入れる。
-      quotation = keyword;
-      //pageOneとquotationが同じ場合は、pageOne++が実行される。
+      //pageCheckKeywordにkeywordを入れる。
+      pageCheckKeyword = keyword;
+      //pageNumとpageCheckKeywordが同じ場合は、pageNum++が実行される。
     } else {
-      pageOne++;
+      pageNum++;
     }
-    //ajaxが実行されて、リンク先からデータを持ってくる。(keywordに入力した内容、pageOneは持ってきたデータの1ページ目の内容)
+    //ajaxが実行されて、リンク先からデータを持ってくる。(keywordに入力した内容、pageNumは持ってきたデータの1ページ目の内容)
     $.ajax({
-      url: "https://ci.nii.ac.jp/books/opensearch/search?title=" + keyword + "&format=json&p=" + pageOne + "&count=20",
+      url: "https://ci.nii.ac.jp/books/opensearch/search?title=" + keyword + "&format=json&p=" + pageNum + "&count=20",
       method: "GET"
       //通信が成功した場合doneが実行され、成功したデータがcreationに入る。失敗したらfailが実行される。
     }).done(function (creation) {
       //成功したデータがcreationに入る。
       infoShow(creation["@graph"])
-      //jqXHRのなかに失敗データが入っている。
-    }).fail(function (jqXHR) {
+      //dataのなかに失敗データが入っている。
+    }).fail(function (data) {
       //messageShowを実行する。
-      messageShow(jqXHR)
+      messageShow(data)
     })
   });
   //.reset-btnが押された場合。
   $(".reset-btn").on("click", function () {
-    //pageOneに1を入れる
-    pageOne = 1;
-    //quotationを空にする
-    quotation = "";
+    //pageNumに1を入れる
+    pageNum = 1;
+    //pageCheckKeywordを空にする
+    pageCheckKeyword = "";
     //.listsが付いている所を空にする。
     $(".lists").empty();
     //エラーメッセージを消す。
