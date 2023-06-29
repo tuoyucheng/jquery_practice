@@ -1,16 +1,16 @@
 $(function () {
-  function infoShow(firstDate) {
+  function infoShow(firstData) {
     //エラーメッセージを消す。
     $(".message").remove();
     //空の変数creationを作る。
-    let creation = firstDate[0].items;
+    const creation = firstData[0].items;
     //creationがnullか0以下だったら、
     if (creation === null || creation.length <= 0) {
       //.listsの前に下記のメッセージを表示させる。
-      $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>')
+      $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>');
     } else {
       //取得したデータを表示する。（作者、タイトル、出版社　など）
-      $.each(firstDate[0].items, function (name, book) {
+      $.each(firstData[0].items, function (name, book) {
         const getInformation = '<li class="lists-item"><div class="list-inner"><p>タイトル：' +
           ((book.title ? book.title : "タイトル不明") + "</p><p>作者：") +
           ((book["dc:creator"] ? book["dc:creator"] : "作者不明") + "</p><p>出版社") +
@@ -34,7 +34,7 @@ $(function () {
     if (data.status === 0) {
       $(".lists").before('<div class="message">正常に通信できませんでした。<br>インターネットの接続の確認をしてください。</div>');
       //dataのステータスが400だったら下記メッセージを表示。
-    } else if (date.status === 400) {
+    } else if (data.status === 400) {
       $(".lists").before('<div class="message">検索キーワードがありません。<br>文字以上で検索してください。</div>');
       //0でも400でもなかったら、下記メッセージを表示。
     } else {
