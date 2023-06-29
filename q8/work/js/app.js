@@ -5,7 +5,7 @@ $(function () {
     //空の変数creationを作る。
     const creation = firstData[0].items;
     //creationがnullか0以下だったら、
-    if (creation === null || creation.length <= 0) {
+    if (creation == null || creation.length <= 0) {
       //.listsの前に下記のメッセージを表示させる。
       $(".lists").before('<div class="message">検索結果が見つかりませんでした。<br>別のキーワードを検索してください。</div>');
     } else {
