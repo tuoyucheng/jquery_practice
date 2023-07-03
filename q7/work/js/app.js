@@ -40,4 +40,4 @@ $(function () {
       console.log($(this).val())
     })
   })
-});
+}); 
